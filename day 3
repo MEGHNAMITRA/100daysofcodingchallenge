@@ -1,0 +1,22 @@
+LINK: https://www.hackerrank.com/challenges/java-end-of-file/problem?isFullScreen=true
+
+SOLUTION:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+         int x=0;
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            x++;
+            System.out.println(x+" "+sc.nextLine());
+        }
+        sc.close();
+    }
+}
