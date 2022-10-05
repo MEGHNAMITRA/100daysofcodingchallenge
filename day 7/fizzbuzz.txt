@@ -1,0 +1,22 @@
+class Solution {
+
+    public List<String> fizzBuzz(int n) {
+
+         List<String> ans = new ArrayList<>();
+
+        for(int i =1; i <=n; i++){           \\we have to take input from 1 to n for looping.
+             
+           if(i%3 == 0 && i%5 ==0) ans.add("FizzBuzz");  \\if the entered number is divisible by 3 and 5 then it will return "FizzBuzz".
+
+           else if(i%3 == 0)       ans.add("Fizz");\\ if the number is divisible by 3 then it will return "Fizz".
+
+           else if(i%5 == 0)       ans.add("Buzz"); \\if the number is divisible by 5 then it will return "Buzz".
+
+           else                    ans.add(i+"");
+       }
+        
+        return ans; \\if the number is not divisible then it will return the entered number.
+    }
+}
+        
+    
