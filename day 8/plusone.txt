@@ -1,0 +1,32 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+	
+        int N = digits.length, i = N;
+		
+		// If 9 is encountered, make it zero and repeat the process
+		// If encountered digit is not 9, add 1 to it and return the array
+        while (--i >= 0) {
+            if (digits[i] != 9) {
+                digits[i] += 1;
+                return digits;
+            }
+            else {
+                digits[i] = 0;
+            }
+        }
+        
+		/*  If by the end of while loop, element at first index has
+			also become 0, it means the number is a multiple of 10
+			Hence, we create a new array of size N+1, put 1 at its
+			first index, let the remaining elements set (by default) 
+			as 0 and return this new array!
+	    */
+        if (digits[0] == 0) {
+            digits = new int[N+1];
+            digits[0] = 1;
+        }
+		
+		// If the above wasn't the case, we return the array as it is
+        return digits;
+    }
+}
