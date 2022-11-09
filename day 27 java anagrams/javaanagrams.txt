@@ -1,0 +1,39 @@
+program link:
+https://www.hackerrank.com/challenges/java-anagrams/problem?isFullScreen=true
+
+program code:
+import java.util.Scanner;
+
+public class Solution {
+
+    static boolean isAnagram(String a, String b) {
+        a = a.toLowerCase();
+  b = b.toLowerCase();
+  char[] a_array = a.toCharArray();
+  char[] b_array = b.toCharArray();
+  boolean flag = true;
+
+  if (a.length() == b.length()) {
+  for (int i=0; i<a_array.length; i++ ) {
+      int count = 0;
+      for(int j=0;j<a_array.length; j++) {
+              if (a_array[i] == a_array[j]) {
+                  count++;
+              }
+      }
+    int secondCount =0;
+      for(int k=0; k<a_array.length;k++) {
+          if (b_array[k] == a_array[i]) {
+              secondCount++;      
+          }
+      }
+      if (count != secondCount) {flag = false;}
+      }
+
+  if (flag==false) {return false;}
+  else {return true;}
+}
+else {return false;}
+}
+
+    public static void main(String[] args) {
