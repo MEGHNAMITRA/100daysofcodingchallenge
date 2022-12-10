@@ -1,0 +1,45 @@
+program link:
+https://leetcode.com/problems/edit-distance/
+
+program code:
+public int minDistance(String word1, String word2) {
+    if (word1 == null || word2 == null) return -1;
+
+    int l1 = word1.length();
+    int l2 = word2.length();
+
+    if (l1 == 0 || l2 == 0) {
+        return l1 == 0 ? l2 : l1;
+    }
+
+    // A pattern for coding up DP, use extra array
+    // This could be further optimized into 2 arrays
+    int[][] lookup = new int[l1 + 1][l2 + 1];
+
+    // Note the initialization case here, for an empty string, it will take i to change with the current one
+    // initialize
+    for (int i = 0; i <= l2; i++) {
+        lookup[0][i] = i;
+    }
+
+    for (int i = 0; i <= l1;i++) {
+        lookup[i][0] = i;
+    }
+
+    /* mathematical induction function:
+     * dp[i][j] =  dp[i-1][j-1]   if (A[i] == B[j])
+       or = min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1]) +1;
+        dp[0][j] = j and dp[i][0] = i   */
+    // this is O(M*N) time and M*N space, space could be saved using 2 arrays
+    for (int i = 1; i <= l1; i++) {
+        for (int j = 1; j <= l2; j++) {
+            if (word1.charAt(i-1) == word2.charAt(j-1)) {
+                lookup[i][j] = lookup[i-1][j-1];
+            } else {
+                lookup[i][j] = Math.min(lookup[i-1][j], Math.min(lookup[i][j-1], lookup[i-1][j-1])) + 1;
+            }
+        }
+    }
+
+    return lookup[l1][l2];
+}
