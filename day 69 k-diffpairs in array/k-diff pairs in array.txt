@@ -1,0 +1,18 @@
+program link:
+https://leetcode.com/problems/k-diff-pairs-in-an-array/
+
+program code:
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        if (nums == null || nums.length == 0 || k < 0)   return 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        int pair = 0, count = k == 0 ? 1 : 0;
+        for (int key : map.keySet()) {
+            if (map.getOrDefault(key + k, 0) > count) pair++;
+        }
+        return pair;
+        }
+}
